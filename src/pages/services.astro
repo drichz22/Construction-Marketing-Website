@@ -1,0 +1,16 @@
+---
+import Layout from "../layouts/Layout.astro";
+import ServiceCard from "../components/ServiceCard.astro";
+
+const services = [
+  { name: "Gratis Konsultasi", detail: "Free consultation for planning." },
+  { name: "Gratis RAB", detail: "Free budget estimate for your project." },
+  { name: "Gratis Design", detail: "Design ideas included." },
+  { name: "Garansi Pekerjaan", detail: "Guarantee on all our work." }
+];
+---
+
+<Layout title="Services">
+  <h1>Our Services</h1>
+  {services.map((s) => <ServiceCard {...s} />)}
+</Layout>

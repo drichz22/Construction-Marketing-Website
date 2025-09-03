@@ -1,0 +1,14 @@
+---
+import Layout from "../layouts/Layout.astro";
+import TestimonyCard from "../components/TestimonyCard.astro";
+
+const testimonies = [
+  { client: "Budi", feedback: "Great service and fast work!" },
+  { client: "Sari", feedback: "Highly recommend for renovations." }
+];
+---
+
+<Layout title="Testimonies">
+  <h1>Client Testimonies</h1>
+  {testimonies.map((t) => <TestimonyCard {...t} />)}
+</Layout>
