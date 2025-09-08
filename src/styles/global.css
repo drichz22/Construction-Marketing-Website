@@ -1,5 +1,7 @@
 @import "tailwindcss";
+@import "tailwindcss-animated";
 
 @theme {
     --font-sans: "Poppins", sans-serif;
+    --breakpoint-2xl: 1100px; 
 }

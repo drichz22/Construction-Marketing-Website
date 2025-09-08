@@ -9,12 +9,12 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
 <nav class="fixed top-0 left-0 w-full bg-[#161616] shadow-md z-50">
   <div class="flex items-center justify-between w-full py-5 px-4 relative">
     <!-- Logo -->
-    <div class="flex items-center gap-4 ml-16 mr-4">
+    <div class="flex items-center gap-4 ml-16 mr-4 lg:mr-2">
       <a href="/" aria-label="Go to homepage">
         <Image src={navLogo} alt="Navbar Logo" width={48} height={48} class="cursor-pointer" />
       </a>
       <!-- Branding (text visible only on desktop) -->
-      <div class="flex-col leading-tight cursor-pointer mt-1 hidden lg:flex">
+      <div class="flex-col leading-tight cursor-pointer mt-1 hidden xl:flex">
         <a href="/" aria-label="Go to homepage">
           <h1 class="text-xl md:text-sm tracking-[0.425em] font-extrabold" style="font-family: 'Heading Now', sans-serif;">
             WAHYUDI
@@ -47,7 +47,7 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
               <!-- Dropdown menu -->
               <li class="relative group px-2 py-1 rounded hover:bg-[#e0aa20] hover:text-black transition-colors duration-100 ease-in-out">
                 <div class="inline-flex gap-1">
-                  <a href="/products">Products</a><FontAwesomeIcon icon={faChevronDown} className="mt-1 text-sm"/>
+                  <a href="#">Products</a><FontAwesomeIcon icon={faChevronDown} className="mt-1 text-sm"/>
                 </div>
                 <!-- Submenu -->
                 <ul class="absolute left-0 mt-5 w-48 bg-[#161616] rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-in-out shadow-lg">
@@ -104,7 +104,7 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
       <li class="px-4 py-2 rounded hover:bg-[#e0aa20] hover:text-black transition-colors duration-100 ease-in-out"><a href="/contact">Contact Us</a></li>
     </ul>
     <!-- Social Media -->
-    <div class="lg:flex hidden text-white ml-4 mr-16 gap-4 text-lg">
+    <div class="xl:flex xl:gap-4 hidden text-white ml-4 mr-16 text-lg lg:grid lg:grid-cols-2 lg:gap-2 lg:mr-2">
       <a href="https://www.tiktok.com/@constructa.id" target="_blank" rel="noopener noreferrer">
         <FontAwesomeIcon icon={faTiktok} className="text-white hover:text-[#69c9d0]"/>
       </a>
