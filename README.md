@@ -9,5 +9,6 @@ Tech - Stack:
 - Tailwind (CSS & Animate)
 
 Libraries Used:
+- Swiper.js
 - jquery & jquery Validate
 - Brevo (formerly Sendinblue)
