@@ -1,0 +1,282 @@
+---
+import { Image } from "astro:assets";
+import { products } from "src/data/products/pasir-semen";
+import Layout from "src/layouts/Layout.astro";
+import Loader from "src/components/Reusable/Loader.astro";
+
+const { slug } = Astro.params;
+
+export async function getStaticPaths() {
+  return products.map((p) => ({
+    params: { slug: p.slug },
+    props: { product: p },
+  }));
+}
+
+const product = products.find((p) => p.slug === slug);
+
+if (!product) {
+  throw new Error(`Product not found: ${slug}`);
+}
+
+import { faArrowLeft, faShippingFast, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import "../../../styles/product-details.css";
+---
+
+<Layout>
+  <Loader show={true} />
+  <section class="pt-22 mb-10">
+    <div class="w-auto h-fit mt-20 pl-15 pr-15 xl:pl-35 xl:pr-35 break-words text-justify">
+      <div class="flex flex-col gap-5">
+        <div class="flex flex-row justify-between">
+          <h1 id="name" class="lg:text-4xl text-2xl font-bold text-[#e0aa20] mb-6 fade-section opacity-0 w-[65%] break-words">{product.name}</h1>
+          <a href="/products/pasir-semen">
+            <div class="lg:text-lg text-sm inline-flex hover:text-[#e0aa20] items-center gap-2 ml-8 transform transition-all duration-400 fade-section opacity-0">
+                <FontAwesomeIcon icon={faArrowLeft} className="text-xs lg:text-sm"/>
+                Back to Pasir - Semen Products
+            </div>
+          </a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-stretch">
+          <!-- Swiper Image -->
+          <div class="lg:sticky lg:top-30 h-fit">
+            {
+              product.images.length > 1 ? (
+                <div class="swiper swiper-product mb-8 fade-section opacity-0 rounded-2xl">
+                  <div class="swiper-wrapper">
+                    {product.images.map((img) => (
+                      <div class="swiper-slide">
+                        <Image src={img.src} alt={img.alt} class="w-full h-[500px] object-cover rounded-2xl"/>
+                      </div>
+                    ))}
+                  </div>
+                  <!-- Pagination & nav -->
+                  <div class="swiper-pagination"></div>
+                  <div class="swiper-button-prev"></div>
+                  <div class="swiper-button-next"></div>
+                </div>
+              ) : (
+                <Image src={product.images[0].src} alt={product.images[0].alt} class="w-full h-[300px] object-cover my-4"/>
+              )
+            }
+          </div>
+          <div class="flex flex-col gap-5">
+            <div class="mb-10 flex flex-col gap-3">
+              <input id="product_price" type="hidden" value={product.priceCount}>
+              <input id="product_id" type="hidden" value={product.id}>
+              <h1 class="lg:text-4xl text-2xl font-bold text-white fade-section opacity-0 w-[70%] wrap-break-word">{product.price}</h1>
+              <!-- Quantity Selector -->
+              <div class="flex items-center gap-2 fade-section opacity-0 mt-5 mb-5">
+                <button id="decrease_btn" class="w-8 h-8 flex items-center justify-center rounded-md border border-gray-300 text-xl font-bold hover:bg-gray-600 cursor-pointer disabled:border-gray-950">-</button>
+                <input id="quantity" type="number" value="1" min="1" class="w-12 text-center text-lg font-semibold border border-gray-300 rounded-md select-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"/>
+                <button id="increase_btn" class="w-8 h-8 flex items-center justify-center rounded-md border border-gray-300 text-xl font-bold hover:bg-gray-600 cursor-pointer disabled:border-gray-950">+</button>
+              </div>
+              <!-- Product Details -->
+              <p class="lg:text-lg text-sm text-white text-justify fade-section opacity-0"><span class="font-semibold">Brand: &nbsp;</span>{product.brand}</p>
+              <p class="lg:text-lg text-sm text-white text-justify fade-section opacity-0"><span class="font-semibold">Stok: &nbsp;</span><span id="stok">{product.stok}</span></p>
+              <p class="lg:text-lg text-sm text-white text-justify fade-section opacity-0"><span class="font-semibold">Min. Order: &nbsp;</span>{product.minOrder}</p>
+              <div class="inline-flex gap-4 items-center fade-section opacity-0">
+                <div class="inline-flex gap-0.5 items-center">
+                    <p class="lg:text-sm text-xs font-bold">FREE ONGKIR</p>
+                    <FontAwesomeIcon icon={faShippingFast}/>
+                </div>  
+                <p class="lg:text-lg text-sm text-white text-justify">{product.freeOngkir}</p>
+              </div>
+            </div>
+            <!-- Description -->
+            <div class="flex flex-col gap-5 mb-5">
+              <h1 class="lg:text-xl text-lg flex flex-col gap-3 font-bold fade-section opacity-0">Overview</h1>
+              <p class="lg:text-lg text-sm text-white fade-section opacity-0">{product.description}</p>
+            </div>
+            <div class="flex flex-col gap-5 mb-10">
+              <h1 class="lg:text-xl text-lg flex flex-col gap-3 font-bold fade-section opacity-0">Info Tambahan</h1>
+              <p class="lg:text-lg text-sm text-white fade-section opacity-0">{product.longDesc}</p>
+            </div>
+            <div class="mb-10 w-full border border-white rounded-2xl p-4 flex flex-row justify-between fade-section opacity-0 text-[#e0aa20]">
+              <span class="lg:text-lg text-sm">Total Pembayaran</span>
+              <span id="total" class="font-bold lg:text-lg text-sm">
+                <!-- dari script -->
+              </span>
+            </div>
+            <button id="add_to_cart_btn" class="px-4 py-2 bg-white text-black lg:text-lg text-sm font-bold rounded-lg hover:bg-[#ffffffb1] cursor-pointer transition-colors duration-300 ease-in-out fade-section opacity-0">
+              <div class="inline-flex items-center gap-2">
+                <FontAwesomeIcon icon={faShoppingCart}/>
+                Add to Cart
+              </div>
+            </button>
+            <button id="order_product_btn" class="px-4 py-2 bg-[#e0aa20] text-black lg:text-lg text-sm font-bold rounded-lg hover:bg-[#c8961d] cursor-pointer transition-colors duration-300 ease-in-out fade-section opacity-0">
+              Order Product
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-[#e0aa20] to-transparent mt-10"></div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  // Init swiper
+  import Swiper from "swiper";
+  import { Navigation, Pagination, Autoplay } from "swiper/modules";
+  import { addToCart } from "src/utils/cartUtils";
+  import moment from "moment";
+  import "moment/locale/id";
+
+  new Swiper(".swiper-product", {
+    modules: [Navigation, Pagination, Autoplay],
+    loop: true,
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    autoplay: {
+      delay: 3000, 
+      disableOnInteraction: false, 
+    },
+    speed: 1000
+  });
+
+  // Loader logic
+  window.addEventListener("load", () => {
+		const loader = document.querySelector("#loader") as HTMLElement | null;
+		if (loader) loader.style.display = "none";
+	});
+
+  // Trigger animation when scrolled to the section
+  const observer = new IntersectionObserver(
+      (entries) => {
+      entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+              entry.target.classList.add("animate-fade-right");
+              entry.target.classList.remove("opacity-0");
+          }
+      });
+      },
+      { threshold: 0.2 }
+  )
+
+  document.querySelectorAll(".fade-section").forEach((el) => observer.observe(el));
+
+  // Price count logic
+  const productPriceEl = document.getElementById("product_price") as HTMLInputElement;
+  let productPrice = 0;
+  if (productPriceEl) productPrice = Number(productPriceEl.value);
+
+  const quantityEl = document.getElementById("quantity") as HTMLInputElement;
+  const totalEl = document.getElementById("total");
+  const decreaseBtn = document.getElementById("decrease_btn") as HTMLButtonElement;
+  const increaseBtn = document.getElementById("increase_btn") as HTMLButtonElement;
+
+  let totalCost = 0;
+  const stok = Number(document.getElementById("stok")?.textContent);
+
+  // Run update total on page load
+  updateTotal();
+
+  // Validation on input manual
+  quantityEl.addEventListener("input", () => {
+    const qty = parseInt(quantityEl.value, 10);
+    if (!isNaN(qty)) {
+      updateTotal();
+    }
+  });
+  quantityEl.addEventListener("blur", updateTotal);
+  quantityEl.addEventListener("change", updateTotal);
+
+  function updateTotal() {
+    let quantity = parseInt(quantityEl.value, 10) || 1;
+
+    if (isNaN(quantity) || quantity < 1) {
+      quantity = 1;
+    } else if (quantity > stok) {
+      quantity = stok;
+    }
+
+    quantityEl.value = quantity.toString();
+
+    totalCost = quantity * productPrice;
+    if (totalEl) totalEl.textContent = `Rp ${totalCost.toLocaleString("id-ID")}`;
+  }
+
+  if (decreaseBtn) {
+    decreaseBtn.addEventListener("click", () => {
+      let qty = parseInt(quantityEl.value, 10) || 1;
+      increaseBtn.disabled = false;
+      if (qty > 1) {
+        qty--;
+        if (quantityEl) quantityEl.value = qty.toString();
+        updateTotal();
+      } else {
+        decreaseBtn.disabled = true;
+      }
+    });
+  }
+
+  if (increaseBtn) {
+    increaseBtn.addEventListener("click", () => {
+      let qty = parseInt(quantityEl.value, 10) || 1;
+      decreaseBtn.disabled = false;
+      if (qty < stok) {
+        qty++;
+        if (quantityEl) quantityEl.value = qty.toString();
+        updateTotal();
+      } else {
+        increaseBtn.disabled = true;
+      }
+    });
+  }
+
+  const nameEl = document.getElementById("name")?.textContent;
+
+  const orderProductBtn = document.getElementById("order_product_btn") as HTMLButtonElement;
+
+  orderProductBtn.addEventListener("click", function () {
+    const waNumber = "62895607951930";
+    moment.locale("id");
+    const uniqueId = Date.now();
+    const now = moment().format("DDMMYYYY");
+    const orderId = "ORD-" + now + `-${uniqueId}`;
+
+    let message = "Halo! Saya ingin memesan!\n\n";
+    message += "Tolong isi data berikut (jika kosong, maka kami tidak bisa proses):\n\n";
+    message += "Nama: \n";
+    message += "No. Telp: \n";
+    message += "Alamat: \n\n";
+    message += `Order ID: ${orderId}\n\n`;
+
+    message += `• ${nameEl}: ${productPrice.toLocaleString("id-ID")} (x${quantityEl.value})\n`;
+    message += `\nTotal: Rp ${totalEl?.textContent},00`;
+
+    let url = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
+    window.open(url, "_blank");
+  });
+
+  const addToCartBtn = document.getElementById("add_to_cart_btn") as HTMLButtonElement;
+  const id = document.getElementById("product_id") as HTMLInputElement;
+
+  function addItemToCart() {
+    try {
+      addToCart({
+        id: id.value,
+        name: nameEl || "",
+        price: productPrice,
+        quantity: Number(quantityEl.value),
+        stok: stok
+      });
+      alert("🛒✅ Produk berhasil ditambahkan ke keranjang!");
+    } catch (err) {
+      alert("🛒❌ Produk gagal ditambahkan ke keranjang!");
+    }
+  }
+
+  addToCartBtn.addEventListener("click", function() {
+    addItemToCart();
+  });
+</script>

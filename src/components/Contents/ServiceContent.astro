@@ -1,0 +1,121 @@
+---
+import { Image } from "astro:assets";
+import serviceHeader from "../../assets/services/services-header.jpg";
+import serviceConsultation from "../../assets/services/service-consultation.jpg";
+import serviceRab from "../../assets/services/service-rab.jpg";
+import serviceDesign from "../../assets/services/service-design.jpg";
+import serviceConstruction from "../../assets/services/service-construction.jpg";
+---
+
+<section class="pt-22 mb-10">
+    <div class="relative w-full h-[420px]">
+        <Image src={serviceHeader} alt="About Us" class="w-full h-full object-cover"/>
+        <!-- Overlay -->
+        <div class="absolute inset-0 bg-black opacity-80"></div>
+        <!-- Text -->
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 max-w-3xl text-center">
+            <h1 class="lg:text-8xl text-5xl font-bold mb-2 animate-fade-right text-white">Services</h1>
+        </div>
+    </div>
+
+    <div class="w-auto h-fit mt-30 pl-15 pr-15 xl:pl-50 xl:pr-50">
+        <div class="flex flex-col gap-30">
+            <!-- Service 1 -->
+            <div class="flex flex-col sm:flex-row lg:items-stretch items-center gap-15 fade-section-right opacity-0">
+                <div class="lg:w-[40%] lg:h-auto w-32 h-32 rounded-lg flex items-center justify-center bg-[#e0aa20e0] text-white text-lg sm:text-2xl lg:text-3xl">
+                    <Image src={serviceConsultation} alt="Service Consultation" class="w-[95%] h-[95%] object-cover"/>
+                </div>
+                <div class="w-[60%] flex flex-col gap-5 break-words lg:text-justify text-center"> 
+                    <h5 class="lg:text-lg text-sm font-bold text-[#fccf5f]">GRATIS</h5>
+                    <h2 class="text-2xl lg:text-4xl font-bold text-[#e0aa20]">Jasa Konsultasi</h2>
+                    <h4 class="text-lg lg:text-xl leading-8">
+                        Kami menyediakan layanan konsultasi konstruksi untuk membantu Anda mengambil keputusan terbaik sebelum memulai proyek. 
+                        Tim ahli kami akan memberikan analisis menyeluruh terkait kebutuhan, perencanaan, perizinan, hingga pemilihan material 
+                        yang tepat. Dengan konsultasi yang tepat, Anda dapat meminimalisir risiko, mengoptimalkan anggaran, dan memastikan proyek 
+                        berjalan sesuai standar kualitas dan waktu.
+                    </h4>
+                </div>
+            </div>
+
+            <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-[#e0aa20] to-transparent"></div>
+
+            <!-- Service 2 -->
+            <div class="flex flex-col sm:flex-row-reverse lg:items-stretch items-center gap-15 fade-section-left opacity-0">
+                <div class="lg:w-[40%] lg:h-auto w-32 h-32 rounded-lg flex items-center justify-center bg-[#e0aa20e0] text-white text-lg sm:text-2xl lg:text-3xl">
+                    <Image src={serviceRab} alt="Service RAB" class="w-[95%] h-[95%] object-cover"/>
+                </div>
+                <div class="w-[60%] flex flex-col gap-5 break-words lg:text-justify text-center"> 
+                    <h5 class="lg:text-lg text-sm font-bold text-[#fccf5f]">GRATIS</h5>
+                    <h2 class="text-2xl lg:text-4xl font-bold text-[#e0aa20]">Jasa Pembuatan RAB</h2>
+                    <h4 class="text-lg lg:text-xl">
+                        Layanan pembuatan RAB bertujuan untuk memberikan gambaran yang jelas dan detail mengenai estimasi biaya pembangunan. RAB 
+                        yang kami susun mencakup kebutuhan material, tenaga kerja, hingga peralatan, sehingga klien dapat mengatur keuangan proyek 
+                        dengan lebih terukur. Transparansi dan ketelitian dalam penyusunan RAB menjadi prioritas kami, sehingga tidak ada biaya 
+                        tersembunyi yang membebani klien.
+                    </h4>
+                </div>
+            </div>
+
+            <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-[#e0aa20] to-transparent"></div>
+
+            <!-- Service 3 -->
+            <div class="flex flex-col sm:flex-row lg:items-stretch items-center gap-15 fade-section-right opacity-0">
+                <div class="lg:w-[40%] lg:h-auto w-32 h-32 rounded-lg flex items-center justify-center bg-[#e0aa20e0] text-white text-lg sm:text-2xl lg:text-3xl">
+                    <Image src={serviceDesign} alt="Service Design" class="w-[95%] h-[95%] object-cover"/>
+                </div>
+                <div class="w-[60%] flex flex-col gap-5 break-words lg:text-justify text-center"> 
+                    <h5 class="lg:text-lg text-sm font-bold text-[#fccf5f]">GRATIS</h5>
+                    <h2 class="text-2xl lg:text-4xl font-bold text-[#e0aa20]">Jasa Design</h2>
+                    <h4 class="text-lg lg:text-xl">
+                        Kami menawarkan jasa desain arsitektur dan interior yang kreatif sekaligus fungsional. Setiap desain disesuaikan dengan 
+                        kebutuhan, anggaran, serta gaya yang diinginkan klien. Dengan memadukan estetika, kenyamanan, dan efisiensi, kami 
+                        menghadirkan solusi desain yang tidak hanya indah dipandang, tetapi juga praktis dan tahan lama.
+                    </h4>
+                </div>
+            </div>
+
+            <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-[#e0aa20] to-transparent"></div>
+
+            <!-- Service 4 -->
+            <div class="flex flex-col sm:flex-row-reverse lg:items-stretch items-center gap-15 fade-section-left opacity-0">
+                <div class="lg:w-[40%] lg:h-auto w-32 h-32 rounded-lg flex items-center justify-center bg-[#e0aa20e0] text-white text-lg sm:text-2xl lg:text-3xl">
+                    <Image src={serviceConstruction} alt="Service Construction" class="w-[95%] h-[95%] object-cover"/>
+                </div>
+                <div class="w-[60%] flex flex-col gap-5 break-words lg:text-justify text-center"> 
+                    <h5 class="lg:text-lg text-sm font-bold text-[#fccf5f]">GARANSI 100%</h5>
+                    <h2 class="text-2xl lg:text-4xl font-bold text-[#e0aa20]">Jasa Pembangunan</h2>
+                    <h4 class="text-lg lg:text-xl">
+                        Layanan pembangunan kami mencakup pengerjaan konstruksi dari awal hingga akhir dengan standar kualitas terbaik. Tim 
+                        profesional kami berkomitmen untuk menyelesaikan proyek tepat waktu, menggunakan material berkualitas, serta memperhatikan
+                        aspek keselamatan kerja. Kami memastikan hasil akhir sesuai dengan desain yang disepakati dan memberikan nilai tambah bagi 
+                        klien.
+                    </h4>
+                </div>
+            </div>
+
+            <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-[#e0aa20] to-transparent"></div>
+
+        </div>
+    </div>
+</section>
+
+<script>
+    // Trigger animation when scrolled to the section
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    if (entry.target.classList.contains("fade-section-left")) {
+                        entry.target.classList.add("animate-fade-left");
+                    } else if (entry.target.classList.contains("fade-section-right")) {
+                        entry.target.classList.add("animate-fade-right");
+                    }
+                    entry.target.classList.remove("opacity-0");
+                }
+            });
+        },
+        { threshold: 0.2 }
+    )
+
+    document.querySelectorAll("[class*='fade-section']").forEach((el) => observer.observe(el));
+</script>

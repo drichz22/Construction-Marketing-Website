@@ -1,0 +1,40 @@
+---
+import { Image } from "astro:assets";
+const { title, description, redirect, imageSrc, imageAlt } = Astro.props;
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+---
+
+<div class="border border-white max-w-sm rounded-xl overflow-hidden shadow-lg fade-section opacity-0">
+    <Image src={imageSrc} alt={imageAlt} class="w-full h-[200px] object-cover"/>
+    <div class="px-6 py-4">
+        <div class="font-bold text-xl mb-2 text-[#e0aa20]">{title}</div>
+        <p class="text-white text-justify">{description}</p>
+    </div>
+    <div class="px-6 pt-2 pb-2 bg-[#e0aa20] text-black font-bold group cursor-pointer overflow-hidden">
+        <a href={redirect}>
+            <div class="inline-flex gap-2 items-center transform transition-all duration-400 translate-x-0 group-hover:translate-x-[70%]">
+                View Details
+                <FontAwesomeIcon icon={faArrowRight} className="text-xs lg:text-sm"/>
+            </div>
+        </a>
+    </div>
+</div>
+
+<script>
+    // Trigger animation when scrolled to the section
+    const observer = new IntersectionObserver(
+        (entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("animate-fade-right");
+                entry.target.classList.remove("opacity-0");
+            }
+        });
+        },
+        { threshold: 0.2 }
+    )
+
+    document.querySelectorAll(".fade-section").forEach((el) => observer.observe(el));
+</script>

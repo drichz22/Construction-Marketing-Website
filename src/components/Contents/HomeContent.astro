@@ -1,0 +1,218 @@
+---
+import { Image } from "astro:assets";
+import logo from "../../assets/Logo.png";
+import illustrationWhoWeAre from "../../assets/home/who-we-are.svg";
+import illustrationRespond from "../../assets/home/illustration-respond.svg";
+
+import testimonialFeat from "../../assets/home/testimonials - feat.jpg";
+import testimonial1 from "../../assets/home/testimonial - 1.jpg";
+import testimonial2 from "../../assets/home/testimonial - 2.jpg";
+import testimonial3 from "../../assets/home/testimonial - 3.jpg";
+import featProject from "../../assets/home/feat-project.jpg";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faQuoteLeft, faLocationDot } from "@fortawesome/free-solid-svg-icons";
+
+import "../../styles/testimonies.css";
+---
+<section class="relative w-full h-fit mb-10">
+  <div class="relative z-10 w-auto h-fit">
+    <!-- About Us Overview -->  
+    <div class="w-auto h-2/6 mt-20 pl-15 pr-15 xl:pl-50 xl:pr-50 mb-30">
+      <div class="flex flex-col gap-4 justify-center items-center lg:justify-start lg:items-start">
+        <h1 class="font-bold text-white text-4xl xl:text-5xl mb-10 fade-section opacity-0">Who We Are</h1>
+        <Image src={illustrationWhoWeAre} alt="Illustration Intro" class="w-[200px] h-[200px] lg:w-[400px] lg:h-[400px] absolute left-[50%] top-20 lg:left-[30%] fade-section opacity-0"/>
+        <Image src={logo} alt="Siapakah Kita?" class="w-[180px] h-[180px] lg:w-[280px] lg:h-[280px] mb-20 rounded-4xl shadow-xl shadow-black/30 drop-shadow-[0_8px_20px_rgba(0,0,0,0.25)] fade-section opacity-0 mr-4"/>
+        <h2 class="font-medium text-white text-lg text-justify fade-section opacity-0">
+          <span class="font-bold text-[#e0aa20]">Wahyudi Construction</span> adalah 
+          perusahaan penyedia jasa kontraktor yang mengutamakan inovasi, kualitas, dan integritas. 
+          Sejak 2023, kami telah berkomitmen untuk memberikan solusi konstruksi terbaik, dari perencanaan 
+          hingga penyelesaian proyek. Dengan tenaga profesional yang ahli di bidangnya, kami hadir untuk mewujudkan 
+          pembangunan yang kokoh, efisien, dan berkelanjutan. Untuk saat ini, kami hanya fokus melayani 
+          di daerah Jawa Timur, khususnya Kota <span class="font-bold">Surabaya</span>.
+        </h2>
+        <a href="/about" class="mt-10 inline-block bg-[#e0aa20] text-black px-6 py-2 rounded-lg font-semibold shadow-lg hover:bg-white transition-colors duration-300 fade-section opacity-0">
+          Learn More
+        </a>
+      </div>
+    </div>
+    <!-- Testimonies -->
+    <div class="w-auto relative h-2/6">
+      <!-- Separator -->
+      <div class="absolute left-0 right-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-[#e0aa20] to-transparent"></div>
+      <!-- Testi Section -->
+      <div class="flex flex-col lg:gap-4 gap-20 justify-center items-center lg:justify-end lg:items-end pt-30 pl-15 pr-15 xl:pl-50 xl:pr-50">
+        <h1 class="font-bold text-white text-4xl xl:text-5xl mb-20 fade-section opacity-0">What Do They Say?</h1>
+        <!-- Featured Testi -->
+        <div class="flex flex-col md:flex-row items-center md:justify-between gap-20 lg:gap-40">
+          <div class="flex flex-col justify-center max-w-xl fade-section opacity-0">
+            <span class="absolute xl:-top-35 lg:-top-25 -top-20 xl:-left-10 lg:-left-7 -left-5 xl:text-[6rem] lg:text-[4.5rem] text-[3rem] text-[#e0aa20]">
+              <FontAwesomeIcon icon={faQuoteLeft}/>
+            </span>
+            <p class="lg:text-lg text-neutral-300 italic leading-relaxed">
+              "Wahyudi Construction benar-benar mewujudkan impian kami. 
+              Prosesnya transparan, hasilnya berkualitas tinggi, 
+              dan timnya profesional dari awal hingga akhir."
+            </p>
+            <h3 class="mt-6 font-bold xl:text-xl text-lg text-[#e0aa20]">
+              Nicole Kidman
+            </h3>
+            <span class="text-neutral-400 lg:text-base text-sm">
+              Homeowner - Skyscraper 1000 lantai
+            </span>
+          </div>
+          <div class="lg:w-80 lg:h-80 w-50 h-50 rounded-full overflow-hidden shadow-xl mb-6 fade-section opacity-0">
+            <Image src={testimonialFeat} alt="Testimonial Feat" class="w-full h-full object-cover"/>
+          </div>
+        </div>
+        <!-- Card Testi -->
+        <div class="relative w-full mt-15">
+          <Image src={illustrationRespond} alt="Illustration Respond" class="lg:w-[240px] lg:h-[240px] w-[150px] h-[150px] absolute xl:-top-45 lg:-top-40 -top-25 lg:left-[37%] left-[33%] z-0 fade-section opacity-0"/>
+          <div class="swiper swiper-testimony max-w-[750px] fade-section opacity-0">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide">
+              <!-- Card 1 -->
+              <div class="card bg-white text-black rounded-2xl shadow-lg p-6 flex flex-col items-center justify-center text-center w-full h-full">
+                <p class="text-lg italic text-center mb-4">
+                  "Bagus..Profesional bangettt!"
+                </p>
+                <div class="w-16 h-16 rounded-full overflow-hidden mb-2">
+                  <Image src={testimonial1} alt="Testimonial 1" class="w-full h-full object-cover"/>
+                </div>
+                <h3 class="font-semibold">Max Verstappen</h3>
+                <span class="text-sm text-gray-500">Homeowner - Rumah 2 Lantai</span>
+                <!-- Rating field -->
+                <div class="flex items-center justify-center mt-2">
+                  <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><polygon points="10,1.5 12.59,7.67 19.07,8.09 14,12.75 15.18,19.04 10,15.77 4.82,19.04 6,12.75 0.93,8.09 7.41,7.67" /></svg>
+                  <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><polygon points="10,1.5 12.59,7.67 19.07,8.09 14,12.75 15.18,19.04 10,15.77 4.82,19.04 6,12.75 0.93,8.09 7.41,7.67" /></svg>
+                  <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><polygon points="10,1.5 12.59,7.67 19.07,8.09 14,12.75 15.18,19.04 10,15.77 4.82,19.04 6,12.75 0.93,8.09 7.41,7.67" /></svg>
+                  <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><polygon points="10,1.5 12.59,7.67 19.07,8.09 14,12.75 15.18,19.04 10,15.77 4.82,19.04 6,12.75 0.93,8.09 7.41,7.67" /></svg>
+                  <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><polygon points="10,1.5 12.59,7.67 19.07,8.09 14,12.75 15.18,19.04 10,15.77 4.82,19.04 6,12.75 0.93,8.09 7.41,7.67" /></svg>
+                  <span class="ml-2 mt-1 text-sm text-gray-500 font-bold">5.0</span>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <!-- Card 2 -->
+              <div class="card bg-white text-black rounded-2xl shadow-lg p-6 flex flex-col items-center justify-center text-center w-full h-full">
+                <p class="text-lg italic text-center mb-4">
+                  "Helpful banget buat bantu aku kerja, hanya mungkin bisa lebi fleksibel lagi si..."
+                </p>
+                <div class="w-16 h-16 rounded-full overflow-hidden mb-2">
+                  <Image src={testimonial2} alt="Testimonial 2" class="w-full h-full object-cover"/>
+                </div>
+                <h3 class="font-semibold">Sydney Sweeney</h3>
+                <span class="text-sm text-gray-500">Architect - Rumah 1 lantai</span>
+                <div class="flex items-center justify-center mt-2">
+                  <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><polygon points="10,1.5 12.59,7.67 19.07,8.09 14,12.75 15.18,19.04 10,15.77 4.82,19.04 6,12.75 0.93,8.09 7.41,7.67" /></svg>
+                  <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><polygon points="10,1.5 12.59,7.67 19.07,8.09 14,12.75 15.18,19.04 10,15.77 4.82,19.04 6,12.75 0.93,8.09 7.41,7.67" /></svg>
+                  <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><polygon points="10,1.5 12.59,7.67 19.07,8.09 14,12.75 15.18,19.04 10,15.77 4.82,19.04 6,12.75 0.93,8.09 7.41,7.67" /></svg>
+                  <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><polygon points="10,1.5 12.59,7.67 19.07,8.09 14,12.75 15.18,19.04 10,15.77 4.82,19.04 6,12.75 0.93,8.09 7.41,7.67" /></svg>
+                  <span class="ml-2 mt-1 text-sm text-gray-500 font-bold">4.0</span>
+                </div>
+              </div>
+            </div>
+            <div class="swiper-slide">
+              <!-- Card 3 -->
+              <div class="card bg-white text-black rounded-2xl shadow-lg p-6 flex flex-col items-center justify-center text-center w-full h-full">
+                <p class="text-lg italic text-center mb-4">
+                  "Udah oke, konsep yang diberikan menarik ama sesuai dgn yang kumau juga!"
+                </p>
+                <div class="w-16 h-16 rounded-full overflow-hidden mb-2">
+                  <Image src={testimonial3} alt="Testimonial 3" class="w-full h-full object-cover"/>
+                </div>
+                <h3 class="font-semibold">Daniel Levy</h3>
+                <span class="text-sm text-gray-500">Homeowner - Rumah Mezzanine 3 lantai</span>
+                <div class="flex items-center justify-center mt-2">
+                  <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><polygon points="10,1.5 12.59,7.67 19.07,8.09 14,12.75 15.18,19.04 10,15.77 4.82,19.04 6,12.75 0.93,8.09 7.41,7.67" /></svg>
+                  <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><polygon points="10,1.5 12.59,7.67 19.07,8.09 14,12.75 15.18,19.04 10,15.77 4.82,19.04 6,12.75 0.93,8.09 7.41,7.67" /></svg>
+                  <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><polygon points="10,1.5 12.59,7.67 19.07,8.09 14,12.75 15.18,19.04 10,15.77 4.82,19.04 6,12.75 0.93,8.09 7.41,7.67" /></svg>
+                  <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><polygon points="10,1.5 12.59,7.67 19.07,8.09 14,12.75 15.18,19.04 10,15.77 4.82,19.04 6,12.75 0.93,8.09 7.41,7.67" /></svg>
+                  <!-- Half star -->
+                  <svg class="w-5 h-5 text-yellow-500" fill="currentColor" viewBox="0 0 20 20"><polygon points="10,1.5 12.59,7.67 19.07,8.09 14,12.75 15.18,19.04 10,15.77 4.82,19.04 6,12.75 0.93,8.09 7.41,7.67" />
+                    <polygon points="10,1.5 12.59,7.67 19.07,8.09 14,12.75 15.18,19.04 10,15.77 4.82,19.04 6,12.75 0.93,8.09 7.41,7.67" fill="#d1d5db"/>
+                      <clipPath id="half">
+                        <!-- Change width value to adjust how full the star is (ex. 10/20 = 1/2 star and 5/20 = 1/4 star) -->
+                        <rect x="0" y="0" width="10" height="20"/> 
+                      </clipPath>
+                    <polygon points="10,1.5 12.59,7.67 19.07,8.09 14,12.75 15.18,19.04 10,15.77 4.82,19.04 6,12.75 0.93,8.09 7.41,7.67"
+                      fill="#facc15" 
+                      clip-path="url(#half)" />
+                  </svg>
+                  <span class="ml-2 mt-1 text-sm text-gray-500 font-bold">4.5</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+        </div>        
+      </div>
+    </div>
+    <!-- Projects Overview -->
+    <div class="w-auto h-2/6">
+      <div class="relative w-full h-full mt-20 fade-section opacity-0">
+        <Image src={featProject} alt="Featured Project" class="w-full h-[650px] object-cover"/>
+        <div class="absolute inset-0 bg-black opacity-70"></div>
+        <div class="absolute lg:top-15 lg:left-30 top-10 left-10 right-10 z-10 max-w-4xl fade-section opacity-0">
+          <h1 class="lg:text-2xl text-xl font-semibold mb-2 text-gray-300">FEATURED PROJECT</h1>
+          <h1 class="lg:text-6xl text-4xl font-bold mb-4 text-[#ffb800]">Rumah Spiral 2000 Lantai</h1>
+          <div class="inline-flex items-center gap-2 mb-15">
+            <FontAwesomeIcon icon={faLocationDot}/>
+            <p class="text-white">Jalan Kutisari Indah Selatan XVII, Surabaya, Jawa Timur, Indonesia</p>
+          </div>  
+          <p class="lg:text-lg text-sm mb-10 text-white">
+            Rumah Spiral 2000 Lantai merupakan salah satu proyek unggulan yang baru saja diselesaikan di Surabaya, Jawa Timur pada akhir bulan Agustus 2025 lalu. 
+            Proyek ini mengutamakan komunikasi yang baik antara tim konstruksi 
+            dan klien, menghasilkan proses yang efisien dan jadwal kerja yang terstruktur. Dengan desain unik 
+            berbentuk spiral dan dua lantai yang elegan, rumah ini dibangun dalam waktu sekitar enam bulan. 
+            Hasil akhir proyek menampilkan kualitas konstruksi yang tinggi, keindahan arsitektur, dan 
+            kenyamanan bagi penghuni, membuktikan komitmen pada kepuasan dan profesionalisme dalam setiap detail pembangunan.
+          </p>
+          <a href="/projects" class="inline-block bg-[#e0aa20] text-black px-6 py-2 rounded-lg font-semibold shadow-lg hover:bg-white transition-colors duration-300 fade-section opacity-0">
+            View More
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Trigger animation when scrolled to the section
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("animate-fade-up");
+          entry.target.classList.remove("opacity-0");
+        }
+      });
+    },
+    { threshold: 0.2 }
+  )
+
+  document.querySelectorAll(".fade-section").forEach((el) => observer.observe(el));
+
+  // init swiper
+  import Swiper from 'swiper';
+  import { Navigation, EffectCoverflow } from 'swiper/modules';
+
+  new Swiper('.swiper-testimony', {
+    modules: [Navigation, EffectCoverflow],
+    effect: 'coverflow',
+    grabCursor: true,
+    centeredSlides: true,
+    slidesPerView: 'auto',
+    direction: 'horizontal',
+    coverflowEffect: {
+      rotate: 0,
+      stretch: 80,
+      depth: 200,
+      modifier: 1,
+      slideShadows: false,
+    },
+    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }
+  });
+</script>

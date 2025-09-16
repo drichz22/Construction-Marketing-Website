@@ -1,0 +1,134 @@
+---
+import { Image } from "astro:assets";
+import productsHeader from "../../assets/products/products-header.jpg";
+import pasirPreview from "../../assets/products/pasir-semen/pasir-lumajang/pasir lumajang.jpg";
+import bajaPreview from "../../assets/products/baja-finishing/baja/baja.png";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowRight, faBoxOpen, faMoneyBill, faTruckFast } from "@fortawesome/free-solid-svg-icons";
+---
+
+<section class="pt-22 mb-10">
+    <div class="relative w-full h-[420px]">
+        <Image src={productsHeader} alt="Products Header" class="w-full h-full object-cover"/>
+        <!-- Overlay -->
+        <div class="absolute inset-0 bg-black opacity-80"></div>
+        <!-- Text -->
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 max-w-3xl text-center">
+            <h1 class="lg:text-8xl text-5xl font-bold mb-2 animate-fade-right text-white">Products</h1>
+        </div>
+    </div>
+    <!-- Product Categories -->
+    <div class="w-auto h-fit mt-30 pl-15 pr-15 xl:pl-50 xl:pr-50">
+        <div class="flex flex-col gap-30">
+            <!-- Visi -->
+            <div class="flex flex-col gap-20 justify-center items-center text-white">
+                <h1 class="font-bold text-4xl xl:text-5xl fade-section opacity-0">Jenis Pengadaan</h1>
+                <div class="grid lg:grid-cols-3 md:grid-cols-2 grid-cols-1 gap-30 items-stretch">
+                    <!-- Policy 1 -->
+                    <div class="flex flex-col gap-5 items-center text-center text-white h-full">
+                        <!-- Pict -->
+                        <div class="size-30 bg-[#e0aa20] rounded-full flex justify-center items-center lg:text-4xl text-2xl text-black">
+                            <FontAwesomeIcon icon={faTruckFast}/>
+                        </div>
+                        <!-- Title -->
+                        <h2 class="mt-5 font-semibold xl:text-2xl text-xl fade-section opacity-0">
+                            Free Ongkir
+                        </h2>
+                        <!-- Desc -->
+                        <h3 class="lg:text-xl text-lg fade-section opacity-0">
+                            Free Ongkir hanya berlaku untuk minimal pembelian tertentu. Untuk detail dan informasi per bahan, dapat
+                            dilihat pada detail tiap produk. 
+                        </h3>   
+                    </div>
+                    <!-- Policy 2 -->
+                    <div class="flex flex-col gap-5 items-center text-center text-white h-full">
+                        <!-- Pict -->
+                        <div class="size-30 bg-[#e0aa20] rounded-full flex justify-center items-center lg:text-4xl text-2xl text-black">
+                            <FontAwesomeIcon icon={faMoneyBill}/>
+                        </div>
+                        <!-- Title -->
+                        <h2 class="mt-5 font-semibold xl:text-2xl text-xl fade-section opacity-0">
+                            Cash on Delivery
+                        </h2>
+                        <!-- Desc -->
+                        <h3 class="lg:text-xl text-lg fade-section opacity-0">
+                            Kami menerima pembayaran via Cash on Delivery (CoD) dengan syarat DP (deposit) jumlah tertentu terlebih dahulu. 
+                            Untuk ketentuan lebih lanjut, dapat menghubungi PIC kami melalui <a href="https://wa.link/3xky5c" target="_blank" rel="noopener noreferrer" class="text-[#e0aa20] underline">WhatsApp</a>.
+                        </h3>
+                    </div>
+                    <!-- Policy 3 -->
+                    <div class="flex flex-col gap-5 items-center text-white h-full text-center">
+                        <!-- Pict -->
+                        <div class="size-30 bg-[#e0aa20] rounded-full flex justify-center items-center lg:text-4xl text-2xl text-black">
+                            <FontAwesomeIcon icon={faBoxOpen}/>
+                        </div>
+                        <!-- Title -->
+                        <h2 class="mt-5 font-semibold xl:text-2xl text-xl fade-section opacity-0">
+                            Harga Partai yang Kompetitif
+                        </h2>
+                        <!-- Desc -->
+                        <h3 class="lg:text-xl text-lg fade-section opacity-0">
+                            Untuk pemesanan partai kecil, sedang, dan besar bersaing dengan harga pasar dan tentunya lebih murah
+                            jika dibandingkan dengan harga ecer. Untuk ketentuan lebih lanjut, dapat menghubungi PIC kami melalui
+                            <a href="https://wa.link/3xky5c" target="_blank" rel="noopener noreferrer" class="text-[#e0aa20] underline">WhatsApp</a>.
+                        </h3>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-[#e0aa20] to-transparent"></div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-15">
+                <!-- Pasir Semen -->
+                <div class="border border-white max-w-xl rounded-xl overflow-hidden shadow-lg fade-section opacity-0">
+                    <Image src={pasirPreview} alt="Pasir Preview" class="w-full h-[200px] object-cover"/>
+                    <div class="px-6 py-4">
+                        <div class="font-bold text-xl mb-2 text-[#e0aa20]">Pasir & Semen</div>
+                        <p class="text-white text-justify">(Pasir lumajang, Koral Tinsla, Bata Ringan, Semen Hebel, dan Semen Gresik)</p>
+                    </div>
+                    <div class="px-6 pt-2 pb-2 bg-[#e0aa20] text-black font-bold group cursor-pointer overflow-hidden">
+                        <a href="/products/pasir-semen">
+                            <div class="inline-flex gap-2 items-center transform transition-all duration-400 translate-x-0 group-hover:translate-x-[70%]">
+                                View Details
+                                <FontAwesomeIcon icon={faArrowRight} className="text-xs lg:text-sm"/>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <!-- Baja Finishing -->
+                <div class="border border-white max-w-xl rounded-xl overflow-hidden shadow-lg fade-section opacity-0">
+                    <Image src={bajaPreview} alt="Baja Preview" class="w-full h-[200px] object-cover"/>
+                    <div class="px-6 py-4">
+                        <div class="font-bold text-xl mb-2 text-[#e0aa20]">Baja & Finishing</div>
+                        <p class="text-white text-justify">(Baja Ringan, Usuk/Reng Glugu/Balok, Holo Galvanis, Spandek Pasir, Granit Serenity, Gypsum, dan Holo Plafon)</p>
+                    </div>
+                    <div class="px-6 pt-2 pb-2 bg-[#e0aa20] text-black font-bold group cursor-pointer overflow-hidden">
+                        <a href="products/baja-finishing">
+                            <div class="inline-flex gap-2 items-center transform transition-all duration-400 translate-x-0 group-hover:translate-x-[70%]">
+                                View Details
+                                <FontAwesomeIcon icon={faArrowRight} className="text-xs lg:text-sm"/>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-[#e0aa20] to-transparent"></div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Trigger animation when scrolled to the section
+    const observer = new IntersectionObserver(
+        (entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("animate-fade-up");
+                entry.target.classList.remove("opacity-0");
+            }
+        });
+        },
+        { threshold: 0.2 }
+    )
+
+    document.querySelectorAll(".fade-section").forEach((el) => observer.observe(el));
+</script>

@@ -1,0 +1,59 @@
+---
+import FaqAccordion from "../Reusable/FaqAccordion.astro";
+
+const faqs = [
+  {
+    question: "Apa saja layanan yang ditawarkan?",
+    answer: "Kami menawarkan jasa perancangan desain rumah, konstruksi, maupun renovasi rumah yang sudah Anda miliki. Selain itu, kami juga menjual bahan bangunan berkualitas bila Anda membutuhkannya."
+  },
+  {
+    question: "Apa perusahaan sudah berbadan hukum resmi?",
+    answer: "Ya, kami berbadan hukum dan memiliki izin usaha kontraktor resmi serta tenaga kerja bersertifikat."
+  },
+  {
+    question: "Bagaimana cara saya menggunakan layanan ini?",
+    answer: "Konsumen bisa menanyakan info lebih lanjut melalui WhatsApp yang tertera. Kemudian apabila tertarik, konsumen akan berbicara langsung dengan kontraktor melalui WA dan menandatangani perjanjian dengan bertemu kontraktor secara langsung."
+  },
+  {
+    question: "Apakah saya harus sudah menyiapkan konsep bangunan sebelum bertanya?",
+    answer: "Tentu tidak! Konsumen bisa berkonsultasi dengan kami tentang bangunan ideal yang diinginkan. Akan tetapi, akan lebih baik jika Anda sudah memiliki pandangan jelas tentang rumah impian Anda."
+  },
+  {
+    question: "Berapa lama biasanya waktu pembangunan?",
+    answer: "Tergantung dari kompleksitas proyek, namun biasanya untuk rumah 1 - 2 lantai memakan kisaran waktu antara 4 - 8 bulan."
+  },
+  {
+    question: "Apakah ada garansi pekerjaan?",
+    answer: "Kami berikan 100% garansi pekerjaan untuk jangka waktu tertentu, terutama dalam segi struktur bangunan."
+  },
+  {
+    question: "Apakah saya bisa menggunakan bahan/material sendiri?",
+    answer: "Tentunya bisa! Kami juga menyediakan rekomendasi material untuk Anda pilih."
+  },
+  {
+    question: "Bagaimana sistem perhitungan biaya pembangunan?",
+    answer: "Biaya dihitung berdasarkan RAB (Rencana Anggaran Biaya) yang dibuat sesuai desain, luas bangunan, dan material yang dipilih."
+  },
+  {
+    question: "Bagaimana cara saya membayar jasa konstruksi ini?",
+    answer: "Sistem pembayaran biasanya bertahap sesuai progres pekerjaan (termin), detail akan dijelaskan dalam kontrak."
+  },
+  {
+    question: "Saya ingin membeli bahan bangunan, bagaimana mekanismenya?",
+    answer: "Untuk mekanisme pembelian tetap dengan mengontak pihak kami via WhatsApp. Untuk informasi seperti pengiriman dan ketentuan dapat dilihat lebih lanjut pada bagian 'Products'."
+  },
+  {
+    question: "Apakah ada opsi refund?",
+    answer: "Maaf, sayangnya tidak ada sehingga dapat Anda pertimbangkan dahulu sebelum mendatangani RAB."
+  }
+];
+---
+
+<div class="flex flex-col gap-20 text-white">
+    <h1 class="font-bold text-4xl xl:text-5xl fade-section-up opacity-0 text-center">Frequently Asked Questions (FAQ)</h1> 
+    <div class="space-y-4 text-lg">
+        {faqs.map(faq => (
+            <FaqAccordion question={faq.question} answer={faq.answer} />
+        ))}
+    </div>  
+</div>

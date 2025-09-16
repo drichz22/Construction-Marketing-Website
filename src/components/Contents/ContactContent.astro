@@ -1,0 +1,72 @@
+---
+import { Image } from "astro:assets";
+import contactHeader from "../../assets/contact/contact-header.jpg";
+
+import Form from "../Reusable/Form.astro";
+import Map from "../Reusable/Map.astro";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faWhatsapp } from "@fortawesome/free-brands-svg-icons";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+---
+
+<section class="pt-22 mb-10">
+    <div class="relative w-full h-[420px]">
+        <Image src={contactHeader} alt="Contact Header" class="w-full h-full object-cover"/>
+        <!-- Overlay -->
+        <div class="absolute inset-0 bg-black opacity-80"></div>
+        <!-- Text -->
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 max-w-3xl text-center">
+            <h1 class="lg:text-8xl text-5xl font-bold mb-2 animate-fade-right text-white">Contact Us</h1>
+        </div>
+    </div>
+    <div class="w-full h-fit mt-30 px-15 xl:px-50">
+        <div class="flex flex-col gap-30">
+            <!-- Form Section -->
+            <div class="flex flex-col gap-20 text-white fade-section opacity-0">
+                <h1 class="font-bold text-4xl xl:text-5xl text-center">Let's Get In Touch!</h1>
+                <Form/>
+            </div>
+            <!-- Separator -->
+            <div class="flex items-center justify-center w-full gap-4 fade-section opacity-0">
+                <div class="flex-1 h-[1px] bg-gradient-to-r from-transparent via-[#e0aa20] to-transparent"></div>
+                <h1 class="font-bold text-4xl xl:text-5xl text-center">OR</h1>
+                <div class="flex-1 h-[1px] bg-gradient-to-r from-transparent via-[#e0aa20] to-transparent"></div>
+            </div>
+            <!-- Chat via WA Section -->
+            <div class="flex flex-col gap-30 justify-center items-center text-white">
+                <h1 class="font-bold text-4xl xl:text-5xl text-center fade-section opacity-0">Click Here to Chat with Us!</h1>
+                <div class="flex rounded-full size-12 items-center justify-center border border-white text-2xl lg:text-3xl animate-bounce">
+                    <FontAwesomeIcon icon={faChevronDown}/>
+                </div>
+                <a href="https://wa.link/3xky5c" target="_blank" rel="noopener noreferrer" class="bg-white hover:bg-[#25d366] inline-flex gap-4 items-center text-[#075e54] hover:text-black py-4 px-4 rounded-xl transition-colors duration-300 ease-in-out cursor-pointer fade-section opacity-0">
+                    <FontAwesomeIcon icon={faWhatsapp} className="text-2xl lg:text-3xl"/>
+                    <h2 class="font-bold text-lg lg:text-xl ">Chat on WhatsApp</h2>
+                </a>
+            </div>
+            <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-[#e0aa20] to-transparent"></div>
+            <!-- Map Section -->
+             <div class="flex flex-col gap-30 justify-center items-center text-white">
+                <h1 class="font-bold text-4xl xl:text-5xl text-center fade-section opacity-0">Our Office</h1> 
+                <Map/>    
+             </div>
+            <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-[#e0aa20] to-transparent"></div>
+        </div>
+    </div>
+</section>
+
+<script>
+    const observer = new IntersectionObserver(
+        (entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("animate-fade-up");
+                entry.target.classList.remove("opacity-0");
+            }
+        });
+        },
+        { threshold: 0.2 }
+    );
+
+  document.querySelectorAll(".fade-section").forEach((el) => observer.observe(el));
+</script>

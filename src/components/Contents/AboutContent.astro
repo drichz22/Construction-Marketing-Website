@@ -1,0 +1,116 @@
+---
+import { Image } from "astro:assets";
+import aboutHeader from "../../assets/about/about - header.jpg";
+import visiPict from "../../assets/about/visi-pict.jpg";
+
+import FAQ from "./FAQ.astro";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faThumbsUp, faMicrochip, faPeopleArrows, faSeedling, faRankingStar } from "@fortawesome/free-solid-svg-icons";
+---
+
+<section class="pt-22 mb-10">
+    <div class="relative w-full h-[420px]">
+        <Image src={aboutHeader} alt="About Us" class="w-full h-full object-cover"/>
+        <!-- Overlay -->
+        <div class="absolute inset-0 bg-black opacity-80"></div>
+        <!-- Text -->
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 max-w-3xl text-center">
+            <h1 class="lg:text-8xl text-5xl font-bold mb-2 animate-fade-right text-white">About Us</h1>
+        </div>
+    </div>
+    <div class="w-auto h-fit mt-30 pl-15 pr-15 xl:pl-50 xl:pr-50">
+        <div class="flex flex-col gap-30">
+            <!-- Visi -->
+            <div class="flex flex-col gap-20 justify-center items-center text-white">
+                <h1 class="font-bold text-4xl xl:text-5xl fade-section-up opacity-0">Visi</h1>
+                <Image src={visiPict} alt="Visi Pict" class="w-[50%] fade-section-up opacity-0"/>
+                <h2 class="w-[80%] lg:w-[50%] leading-8 text-lg text-justify xl:text-xl fade-section-up opacity-0">
+                    Menjadi perusahaan kontraktor terpercaya yang menghadirkan solusi konstruksi inovatif dan berkualitas tinggi untuk 
+                    pembangunan yang berkelanjutan.
+                </h2>
+            </div>
+            <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-[#e0aa20] to-transparent"></div>
+            <!-- Misi -->
+            <div class="flex flex-col gap-20 text-white">
+                <h1 class="font-bold text-4xl xl:text-5xl fade-section-up opacity-0 text-center">Misi</h1>
+                <div class="flex flex-col justify-start gap-12 lg:gap-5 text-justify">
+                    <!-- Misi 1 -->
+                    <div class="flex flex-col sm:flex-row items-center sm:items-center gap-4 sm:gap-8 lg:gap-10 fade-section-right opacity-0">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full bg-[#e0aa20e0] text-white text-lg sm:text-2xl lg:text-3xl flex items-center justify-center">
+                            <FontAwesomeIcon icon={faThumbsUp}/>
+                        </div>
+                        <h2 class="sm:text-lg lg:text-xl text-justify sm:text-left">
+                            Menyediakan layanan konstruksi yang mengutamakan ketepatan waktu, kualitas, dan keamanan.
+                        </h2>
+                    </div>
+
+                    <!-- Misi 2 -->
+                    <div class="flex flex-col sm:flex-row items-center sm:items-center gap-4 sm:gap-8 lg:gap-10 fade-section-right opacity-0">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full bg-[#e0aa20e0] text-white text-lg sm:text-2xl lg:text-3xl flex items-center justify-center">
+                            <FontAwesomeIcon icon={faMicrochip}/>
+                        </div>
+                        <h2 class="sm:text-lg lg:text-xl text-justify lg:mb-2 sm:text-left">
+                            Menerapkan teknologi terbaru dan metode konstruksi yang efisien.
+                        </h2>
+                    </div>
+
+                    <!-- Misi 3 -->
+                    <div class="flex flex-col sm:flex-row items-center sm:items-center gap-4 sm:gap-8 lg:gap-10 fade-section-right opacity-0">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full bg-[#e0aa20e0] text-white text-lg sm:text-2xl lg:text-3xl flex items-center justify-center">
+                            <FontAwesomeIcon icon={faPeopleArrows}/>
+                        </div>
+                        <h2 class="sm:text-lg lg:text-xl text-justify lg:mb-2 sm:text-left">
+                            Membangun hubungan jangka panjang dengan pelanggan berdasarkan kepercayaan dan profesionalisme.
+                        </h2>
+                    </div>
+
+                    <!-- Misi 4 -->
+                    <div class="flex flex-col sm:flex-row items-center sm:items-center gap-4 sm:gap-8 lg:gap-10 fade-section-right opacity-0">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full bg-[#e0aa20e0] text-white text-lg sm:text-2xl lg:text-3xl flex items-center justify-center">
+                            <FontAwesomeIcon icon={faSeedling}/>
+                        </div>
+                        <h2 class="sm:text-lg lg:text-xl text-justify lg:mb-2 sm:text-left">
+                            Mengedepankan prinsip ramah lingkungan dalam setiap proyek pembangunan.
+                        </h2>
+                    </div>
+
+                    <!-- Misi 5 -->
+                    <div class="flex flex-col sm:flex-row items-center sm:items-center gap-4 sm:gap-8 lg:gap-10 fade-section-right opacity-0">
+                        <div class="w-12 h-12 sm:w-14 sm:h-14 lg:w-16 lg:h-16 rounded-full bg-[#e0aa20e0] text-white text-lg sm:text-2xl lg:text-3xl flex items-center justify-center">
+                            <FontAwesomeIcon icon={faRankingStar}/>
+                        </div>
+                        <h2 class="sm:text-lg lg:text-xl text-justify lg:mb-2 sm:text-left">
+                            Mengembangkan tenaga kerja yang kompeten dan berintegritas tinggi.
+                        </h2>
+                    </div>
+                </div>
+            </div>
+            <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-[#e0aa20] to-transparent"></div>
+            <!-- FAQ Content -->
+            <FAQ/>
+            <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-[#e0aa20] to-transparent"></div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Trigger animation when scrolled to the section
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    if (entry.target.classList.contains("fade-section-up")) {
+                        entry.target.classList.add("animate-fade-up");
+                    } else if (entry.target.classList.contains("fade-section-right")) {
+                        entry.target.classList.add("animate-fade-right");
+                    }
+                    entry.target.classList.remove("opacity-0");
+                }
+            });
+        },
+        { threshold: 0.2 }
+    )
+
+    document.querySelectorAll("[class*='fade-section']").forEach((el) => observer.observe(el));
+</script>

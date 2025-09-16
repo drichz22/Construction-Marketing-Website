@@ -1,22 +1,17 @@
 ---
-import Layout from "../layouts/Layout.astro"
+import Layout from "../layouts/Layout.astro";
+import Loader from '../components/Reusable/Loader.astro';
+import ContactContent from "../components/Contents/ContactContent.astro";
 ---
 
 <Layout title="Contact Us">
-  <h1>Contact Us</h1>
-  <p>📱 WhatsApp: <a href="https://wa.me/6281234567890">+62 812-3456-7890</a></p>
-  <p>📧 Email: company@email.com</p>
-
-  <form>
-    <label>
-      Name: <input type="text" name="name" />
-    </label>
-    <label>
-      Email: <input type="email" name="email" />
-    </label>
-    <label>
-      Message: <textarea name="message"></textarea>
-    </label>
-    <button type="submit">Send</button>
-  </form>
+  <Loader show={true} />
+  <ContactContent/>
 </Layout>
+
+<script>
+	window.addEventListener("load", () => {
+		const loader = document.querySelector("#loader") as HTMLElement | null;
+		if (loader) loader.style.display = "none";
+	});
+</script>

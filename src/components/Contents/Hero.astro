@@ -1,0 +1,86 @@
+---
+import { Image } from "astro:assets";
+import hero1 from "../../assets/home/hero - 1.jpg";
+import hero2 from "../../assets/home/hero - 2.jpg";
+import hero3 from "../../assets/home/hero - 3.jpg";
+import '../../styles/hero.css';
+---
+
+<section class="pt-22">
+  <div class="swiper swiper-hero">
+    <div class="swiper-wrapper">
+      <!-- Slides -->
+      <div class="swiper-slide">
+        <div class="relative w-full h-full">
+          <Image src={hero1} alt="Hero Img 1" width={1920} height={1080} class="w-full h-full object-cover"/>
+          <!-- Overlay -->
+          <div class="absolute inset-0 bg-black opacity-70"></div>
+          <!-- Text -->
+          <div class="absolute lg:top-15 lg:left-30 top-10 left-10 right-10 z-10 max-w-3xl">
+            <h1 class="lg:text-6xl text-4xl font-bold mb-2 animate-fade-right text-[#ffb800]">CONVERT YOUR DREAM HOME TO REALITY</h1>
+            <p class="lg:text-2xl text-xl mb-10 animate-fade-right text-white">
+              Realize your visioned home at a glance with us! <span class="font-semibold">Are you ready?</span> 
+            </p>
+            <a href="/contact" class="inline-block bg-[#e0aa20] text-black px-6 py-2 rounded-lg font-semibold shadow-lg hover:bg-white transition-colors duration-300 animate-fade-right">
+              Get Started
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="relative w-full h-full">
+          <Image src={hero2} alt="Hero Img 2" width={1920} height={1080} class="w-full h-full object-cover"/>
+          <div class="absolute inset-0 bg-black opacity-70"></div>
+          <div class="absolute lg:top-15 lg:left-30 top-10 left-10 right-10 z-10 max-w-3xl">
+            <h1 class="lg:text-6xl text-4xl font-bold mb-2 animate-fade-right text-[#ffb800]">WORRIED OF HEFTY COSTS?</h1>
+            <p class="lg:text-2xl text-xl mb-10 animate-fade-right text-white">
+              We provide some services free of charge! <span class="font-semibold">Want to know more?</span> 
+            </p>
+            <a href="/services" class="inline-block bg-[#e0aa20] text-black px-6 py-2 rounded-lg font-semibold shadow-lg hover:bg-white transition-colors duration-300 animate-fade-right">
+              View Our Services
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="relative w-full h-full">
+          <Image src={hero3} alt="Hero Img 3" width={1920} height={1080} class="w-full h-full object-cover"/>
+          <div class="absolute inset-0 bg-black opacity-70"></div>
+          <div class="absolute lg:top-15 lg:left-30 top-10 left-10 right-10 z-10 max-w-3xl">
+            <h1 class="lg:text-6xl text-4xl font-bold mb-2 animate-fade-right text-[#ffb800]">DON'T HAVE ANY MATERIALS TO BUILD?</h1>
+            <p class="lg:text-2xl text-xl mb-10 animate-fade-right text-white">
+              We provide building materials for you to buy at a reasonable price! <span class="font-semibold">Interested?</span> 
+            </p>
+            <a href="/products" class="inline-block bg-[#e0aa20] text-black px-6 py-2 rounded-lg font-semibold shadow-lg hover:bg-white transition-colors duration-300 animate-fade-right">
+              View Our Products
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Pagination bullets -->
+    <div class="swiper-pagination"></div>
+    <!-- Nav buttons -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+  </div>
+</section>
+
+<script>
+  import Swiper from 'swiper';
+  import { Navigation, Pagination } from 'swiper/modules';
+
+  new Swiper('.swiper-hero', {
+    modules: [Navigation, Pagination],
+    direction: 'horizontal',
+    loop: true,
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    }
+  });
+</script>

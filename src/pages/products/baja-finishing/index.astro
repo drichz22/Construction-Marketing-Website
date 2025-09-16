@@ -1,0 +1,17 @@
+---
+import Layout from "../../../layouts/Layout.astro";
+import Loader from '../../../components/Reusable/Loader.astro';
+import BajaContent from "../../../components/Contents/BajaContent.astro";
+---
+
+<Layout title="Pasir & Semen">
+  <Loader show={true} />
+  <BajaContent/>
+</Layout>
+
+<script>
+	window.addEventListener("load", () => {
+		const loader = document.querySelector("#loader") as HTMLElement | null;
+		if (loader) loader.style.display = "none";
+	});
+</script>

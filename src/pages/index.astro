@@ -1,12 +1,19 @@
 ---
-import Hero from '../components/Hero.astro';
-import OverviewMenu from '../components/OverviewMenu.astro';
-import ClickToChat from '../components/ClickToChat.astro';
 import Layout from '../layouts/Layout.astro';
+import Loader from '../components/Reusable/Loader.astro';
+import Hero from '../components/Contents/Hero.astro';
+import HomeContent from '../components/Contents/HomeContent.astro';
 ---
 
 <Layout>
+	<Loader show={true} />
 	<Hero/>
-	<OverviewMenu/>
-	<ClickToChat/>
+	<HomeContent/>
 </Layout>
+
+<script>
+	window.addEventListener("load", () => {
+		const loader = document.querySelector("#loader") as HTMLElement | null;
+		if (loader) loader.style.display = "none";
+	});
+</script>

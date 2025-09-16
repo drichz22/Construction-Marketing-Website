@@ -1,0 +1,17 @@
+---
+import Layout from "src/layouts/Layout.astro";
+import Loader from "src/components/Reusable/Loader.astro";
+import CartContent from "src/components/Contents/CartContent.astro";
+---
+
+<Layout>
+    <Loader show={true} />
+    <CartContent/>
+</Layout>
+
+<script>
+	window.addEventListener("load", () => {
+		const loader = document.querySelector("#loader") as HTMLElement | null;
+		if (loader) loader.style.display = "none";
+	});
+</script>

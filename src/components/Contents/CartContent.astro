@@ -1,0 +1,17 @@
+---
+import Cart from "../Reusable/Cart";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+---
+
+<section class="pt-22">
+    <div class="w-auto h-fit mt-20 pl-15 pr-15 xl:pl-35 xl:pr-35 break-words text-justify">
+        <div class="inline-flex gap-4 items-center">
+            <h1 class="lg:text-3xl text-2xl font-bold">Shopping Cart</h1>
+            <FontAwesomeIcon icon={faShoppingCart} className="lg:text-2xl text-xl"/>
+        </div>
+        <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-[#e0aa20] to-transparent mt-5 mb-10"></div>
+        <Cart client:load/>
+    </div>
+</section>

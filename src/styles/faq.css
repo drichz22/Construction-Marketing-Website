@@ -1,0 +1,24 @@
+/* Make the transition of details (accordion) smoother */
+details {
+    @media (prefers-reduced-motion: no-preference) {
+        interpolate-size: allow-keywords;
+    }
+
+    &::details-content {
+        opacity: 0;
+        block-size: 0;
+        overflow-y: clip;
+        transition: content-visibility 1s allow-discrete, opacity 1s, block-size 1s;
+    }
+
+    &[open]::details-content {
+        opacity: 1;
+        block-size: auto;
+    }
+}
+
+/* Change accordion's border color if clicked */
+details[open] {
+  border-color: #e0aa20 !important;
+  transition: border-color 300ms;
+}

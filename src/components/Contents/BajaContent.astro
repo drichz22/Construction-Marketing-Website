@@ -1,0 +1,39 @@
+---
+import { Image } from "astro:assets";
+import bajaHeader from "../../assets/products/baja-finishing/baja-finishing-header.jpg";
+
+import ProductCard from "../Reusable/ProductCard.astro";
+
+import { products } from "../../data/products/baja-finishing";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+---
+
+<section class="pt-22 mb-10">
+    <div class="relative w-full h-[420px]">
+        <Image src={bajaHeader} alt="Baja Header" class="w-full h-full object-cover"/>
+        <!-- Overlay -->
+        <div class="absolute inset-0 bg-black opacity-80"></div>
+        <!-- Text -->
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 max-w-3xl text-center">
+            <h1 class="lg:text-8xl text-5xl font-bold mb-2 animate-fade-right text-white">Baja & Finishing</h1>
+        </div>
+    </div>
+    <!-- Projects -->
+    <div class="w-auto h-fit mt-30 pl-15 pr-15 xl:pl-50 xl:pr-50">
+        <a href="/products">
+            <div class="lg:text-lg text-sm inline-flex hover:text-[#e0aa20] items-center gap-2 transform transition-all duration-400 fade-section opacity-0">
+                <FontAwesomeIcon icon={faArrowLeft} className="text-xs lg:text-sm"/>
+                Back to Products
+            </div>
+        </a>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10">
+            {products.map(product => (
+                <ProductCard name={product.name} description={product.description} price={product.price} freeOngkir={product.freeOngkir}
+                imageSrc={product.imageSrc} imageAlt={product.imageAlt} redirect={product.redirect} minOrder={product.minOrder}/>
+            ))}
+        </div>
+    </div>
+    <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-[#e0aa20] to-transparent mt-30"></div>
+</section>

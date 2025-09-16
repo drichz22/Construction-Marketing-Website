@@ -1,0 +1,21 @@
+---
+export interface Props {
+  question: string;
+  answer: string;
+}
+const { question, answer } = Astro.props;
+import "../../styles/faq.css";
+---
+
+<details class="p-2 group border border-white rounded-lg fade-section-up opacity-0 transition-colors">
+  <summary class="flex items-center justify-between cursor-pointer p-4 font-semibold list-none">
+    <span class="group-open:text-[#e0aa20] w-[80%] transition-colors">{question}</span>
+    <svg class="w-5 h-5 transition-transform duration-300 group-open:text-[#e0aa20] group-open:rotate-180"
+      fill="none" stroke="currentColor" stroke-width="3" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M19 9l-7 7-7-7" />
+    </svg>
+  </summary>
+  <div class="p-4 text-justify">
+    {answer}
+  </div>
+</details>

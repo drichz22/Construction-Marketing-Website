@@ -1,16 +1,17 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import ServiceCard from "../components/ServiceCard.astro";
-
-const services = [
-  { name: "Gratis Konsultasi", detail: "Free consultation for planning." },
-  { name: "Gratis RAB", detail: "Free budget estimate for your project." },
-  { name: "Gratis Design", detail: "Design ideas included." },
-  { name: "Garansi Pekerjaan", detail: "Guarantee on all our work." }
-];
+import Loader from '../components/Reusable/Loader.astro';
+import ServiceContent from "../components/Contents/ServiceContent.astro";
 ---
 
 <Layout title="Services">
-  <h1>Our Services</h1>
-  {services.map((s) => <ServiceCard {...s} />)}
+  <Loader show={true} />
+  <ServiceContent/>
 </Layout>
+
+<script>
+	window.addEventListener("load", () => {
+		const loader = document.querySelector("#loader") as HTMLElement | null;
+		if (loader) loader.style.display = "none";
+	});
+</script>

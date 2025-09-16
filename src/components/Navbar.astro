@@ -4,12 +4,12 @@ import "../styles/navbar.css";
 import navLogo from "../assets/Logo - Alt.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram, faFacebook, faTiktok, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { faChevronDown, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
 ---
 <nav class="fixed top-0 left-0 w-full bg-[#161616] shadow-md z-50">
   <div class="flex items-center justify-between w-full py-5 px-4 relative">
     <!-- Logo -->
-    <div class="flex items-center gap-4 ml-16 mr-4 lg:mr-2">
+    <div class="flex items-center gap-4 ml-16 mr-4 lg:mr-0">
       <a href="/" aria-label="Go to homepage">
         <Image src={navLogo} alt="Navbar Logo" width={48} height={48} class="cursor-pointer" />
       </a>
@@ -40,14 +40,14 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
           <!-- Navigation Links -->
           <nav class="flex-1">
             <ul class="flex flex-col gap-4 px-6">
-              <li><a href="/" class="px-2 py-1 text-white hover:bg-[#e0aa20] hover:text-black rounded transition">Home</a></li>
-              <li><a href="/about" class="px-2 py-1 text-white hover:bg-[#e0aa20] hover:text-black rounded transition">About Us</a></li>
-              <li><a href="/projects" class="px-2 py-1 text-white hover:bg-[#e0aa20] hover:text-black rounded transition">Projects</a></li>
-              <li><a href="/services" class="px-2 py-1 text-white hover:bg-[#e0aa20] hover:text-black rounded transition">Services</a></li>
+              <li class="cursor-pointer"><a href="/" class="px-2 py-1 text-white hover:bg-[#e0aa20] hover:text-black rounded transition">Home</a></li>
+              <li class="cursor-pointer"><a href="/about" class="px-2 py-1 text-white hover:bg-[#e0aa20] hover:text-black rounded transition">About Us</a></li>
+              <li class="cursor-pointer"><a href="/projects" class="px-2 py-1 text-white hover:bg-[#e0aa20] hover:text-black rounded transition">Projects</a></li>
+              <li class="cursor-pointer"><a href="/services" class="px-2 py-1 text-white hover:bg-[#e0aa20] hover:text-black rounded transition">Services</a></li>
               <!-- Dropdown menu -->
-              <li class="relative group px-2 py-1 rounded hover:bg-[#e0aa20] hover:text-black transition-colors duration-100 ease-in-out">
-                <div class="inline-flex gap-1">
-                  <a href="#">Products</a><FontAwesomeIcon icon={faChevronDown} className="mt-1 text-sm"/>
+              <li class="relative group px-2 py-1 rounded hover:bg-[#e0aa20] hover:text-black transition-colors duration-100 ease-in-out cursor-pointer">
+                <div class="inline-flex items-center gap-1">
+                  <a href="/products">Products</a><FontAwesomeIcon icon={faChevronDown} className="text-xs"/>
                 </div>
                 <!-- Submenu -->
                 <ul class="absolute left-0 mt-5 w-48 bg-[#161616] rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-in-out shadow-lg">
@@ -59,8 +59,7 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
                   </li>
                 </ul>
               </li> 
-              <li><a href="/testimonies" class="px-2 py-1 text-white hover:bg-[#e0aa20] hover:text-black rounded transition">Testimonies</a></li>
-              <li><a href="/contact" class="px-2 py-1 text-white hover:bg-[#e0aa20] hover:text-black rounded transition">Contact Us</a></li>
+              <li class="cursor-pointer"><a href="/contact" class="px-2 py-1 text-white hover:bg-[#e0aa20] hover:text-black rounded transition">Contact Us</a></li>
             </ul>
           </nav>
           <!-- Social Media -->
@@ -77,19 +76,28 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
             <a href="https://wa.link/3xky5c" target="_blank" rel="noopener noreferrer">
               <FontAwesomeIcon icon={faWhatsapp} className="text-white hover:text-[#25D366]"/>
             </a>
+            <a href="/cart" class="relative inline-block">
+              <FontAwesomeIcon icon={faShoppingCart} className="text-white hover:text-[#e0aa20]"/>
+              <span id="cartCount1" class="cart-count absolute -top-2 -right-2 bg-[#e0aa20] text-black text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">
+                0
+              </span>
+            </a>
           </div>
         </div>
       </div>
     </aside>
     <!-- Menu -->
     <ul class="hidden lg:flex flex-row gap-2 py-1 px-1 rounded-lg font-semibold border border-[#e0aa20] text-sm items-center w-full max-w-fit mx-auto bg-transparent" id="navbar-menu">
-      <li class="px-4 py-2 rounded hover:bg-[#e0aa20] hover:text-black transition-colors ease-in-out"><a href="/">Home</a></li>
-      <li class="px-4 py-2 rounded hover:bg-[#e0aa20] hover:text-black transition-colors ease-in-out"><a href="/about">About Us</a></li>
-      <li class="px-4 py-2 rounded hover:bg-[#e0aa20] hover:text-black transition-colors ease-in-out"><a href="/projects">Projects</a></li>
-      <li class="px-4 py-2 rounded hover:bg-[#e0aa20] hover:text-black transition-colors ease-in-out"><a href="/services">Services</a></li>
+      <li class="px-4 py-2 rounded hover:bg-[#e0aa20] hover:text-black transition-colors ease-in-out cursor-pointer"><a href="/">Home</a></li>
+      <li class="px-4 py-2 rounded hover:bg-[#e0aa20] hover:text-black transition-colors ease-in-out cursor-pointer"><a href="/about">About Us</a></li>
+      <li class="px-4 py-2 rounded hover:bg-[#e0aa20] hover:text-black transition-colors ease-in-out cursor-pointer"><a href="/projects">Projects</a></li>
+      <li class="px-4 py-2 rounded hover:bg-[#e0aa20] hover:text-black transition-colors ease-in-out cursor-pointer"><a href="/services">Services</a></li>
       <!-- Dropdown menu -->
-      <li class="relative group px-4 py-2 rounded hover:bg-[#e0aa20] hover:text-black transition-colors duration-100 ease-in-out">
-        <a href="/products">Products</a>
+      <li class="relative group px-4 py-2 rounded hover:bg-[#e0aa20] hover:text-black transition-colors duration-100 ease-in-out cursor-pointer">
+        <div class="inline-flex gap-1 items-center cursor-pointer">
+          <a href="/products">Products</a>
+          <FontAwesomeIcon icon={faChevronDown} className="text-xs"/>
+        </div>
         <!-- Submenu -->
         <ul class="absolute left-0 mt-5 w-48 bg-[#161616] rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-in-out shadow-lg">
           <li>
@@ -100,11 +108,10 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
           </li>
         </ul>
       </li> 
-      <li class="px-4 py-2 rounded hover:bg-[#e0aa20] hover:text-black transition-colors duration-100 ease-in-out"><a href="/testimonies">Testimonies</a></li>
-      <li class="px-4 py-2 rounded hover:bg-[#e0aa20] hover:text-black transition-colors duration-100 ease-in-out"><a href="/contact">Contact Us</a></li>
+      <li class="px-4 py-2 rounded hover:bg-[#e0aa20] hover:text-black transition-colors duration-100 ease-in-out cursor-pointer"><a href="/contact">Contact Us</a></li>
     </ul>
     <!-- Social Media -->
-    <div class="xl:flex xl:gap-4 hidden text-white ml-4 mr-16 text-lg lg:grid lg:grid-cols-2 lg:gap-2 lg:mr-2">
+    <div class="xl:flex xl:gap-4 xl:mr-16 hidden text-white ml-4 mr-16 text-lg lg:grid lg:grid-cols-2 lg:gap-2 lg:mr-2">
       <a href="https://www.tiktok.com/@constructa.id" target="_blank" rel="noopener noreferrer">
         <FontAwesomeIcon icon={faTiktok} className="text-white hover:text-[#69c9d0]"/>
       </a>
@@ -117,11 +124,20 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
       <a href="https://wa.link/3xky5c" target="_blank" rel="noopener noreferrer">
         <FontAwesomeIcon icon={faWhatsapp} className="text-white hover:text-[#25D366]"/>
       </a>
+      <p class="lg:text-lg text-sm font-semibold">|</p>
+      <a href="/cart" class="relative inline-block">
+        <FontAwesomeIcon icon={faShoppingCart} className="text-white hover:text-[#e0aa20]"/>
+        <span id="cartCount2" class="cart-count absolute -top-2 -right-2 bg-[#e0aa20] text-black text-xs font-bold w-5 h-5 rounded-full flex items-center justify-center">
+          0
+        </span>
+      </a>
     </div>
   </div>  
 </nav>
 
 <script>
+  import { updateCartCount } from "src/utils/cartUtils";
+
   document.addEventListener('DOMContentLoaded', function () {
     const menuToggle = document.getElementById('menu-toggle');
     const sidebar = document.getElementById('sidebar');
@@ -133,5 +149,7 @@ import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
         sidebar.classList.toggle('translate-x-0');
       });
     }
+    
+    updateCartCount();
   });
 </script>

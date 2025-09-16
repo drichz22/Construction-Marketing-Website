@@ -1,0 +1,115 @@
+<div class="w-full flex justify-center items-center">
+  <form id="contact_us" class="w-full border border-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+    <div class="mb-8">
+      <label class="block text-gray-200 text-sm font-bold mb-2" for="name">
+        Name
+      </label>
+      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-200 leading-tight focus:outline-none focus:border-[#e0aa20] focus:ring-1 focus:ring-[#e0aa20]" id="name" name="name" type="text" placeholder="e.g. Bambang Wijaya">
+    </div>
+    <div class="mb-8">
+      <label class="block text-gray-200 text-sm font-bold mb-2" for="email">
+        Email Address
+      </label>
+      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-200 leading-tight focus:outline-none focus:border-[#e0aa20] focus:ring-1 focus:ring-[#e0aa20]" id="email" name="email" type="email" placeholder="bambang.wijaya@gmail.com">
+    </div>
+    <div class="mb-10">
+      <label class="block text-gray-200 text-sm font-bold mb-2" for="username">
+        Message
+      </label>
+      <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-200 leading-tight focus:outline-none focus:border-[#e0aa20] focus:ring-1 focus:ring-[#e0aa20]" id="message" name="message" placeholder="Permisi, saya mau bertanya..."></textarea>
+    </div>
+    <div class="flex items-center justify-center">
+      <button class="bg-[#e0aa20] hover:bg-white text-black font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline cursor-pointer transition-colors duration-300" type="submit">
+        Submit
+      </button>
+    </div>
+  </form>
+</div>
+
+<script>
+  import $ from "jquery";
+  import "jquery-validation";
+
+  const contactUsForm = $('#contact_us');
+
+  $(function () {
+    // Form Validation
+    contactUsForm.validate({
+      rules: {
+        name: {
+          required: true,
+          minlength: 2,
+        },
+        email: {
+          required: true,
+          email: true,
+        },
+        message: {
+          required: true,
+          minlength: 10,
+        },
+      },
+      messages: {
+        name: {
+          required: "Nama tidak boleh kosong!",
+          minlength: "Nama harus lebih dari 2 karakter!",
+        },
+        email: {
+          required: "E-mail tidak boleh kosong!",
+          email: "Format e-mail harus valid!",
+        },
+        message: {
+          required: "Pesan tidak boleh kosong!",
+          minlength: "Pesan harus lebih dari 10 karakter!",
+        },
+      },
+      errorElement: "p",
+      errorClass: "mt-2 text-sm text-red-500",
+      highlight: function (element: HTMLElement) {
+        $(element).addClass("border-red-500");
+      },
+      unhighlight: function (element: HTMLElement) {
+        $(element).removeClass("border-red-500");
+      },
+    });
+
+    // Form Submission
+    contactUsForm.on("submit", async function (e) {
+      e.preventDefault();
+
+      if (!contactUsForm.valid()) return;
+
+      const data = {
+        name: $("#name").val(),
+        email: $("#email").val(),
+        message: $("#message").val(),
+      };
+
+      // Show loader
+      const $loader = $("#loader");
+      $loader.show();
+
+      try {
+        const res = await fetch("/api/send-email", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data),
+        });
+
+        const result = await res.json();
+
+        if (result.success) {
+          alert("✅ Pesan terkirim!");
+          contactUsForm.trigger("reset");
+        } else {
+          alert("❌ Pesan gagal terkirim!");
+        }
+      } catch (err) {
+        alert("❌ Ada kesalahan dalam pengiriman pesan!");
+      } finally {
+        // Hide loader whether successfull/failed
+        $loader.hide();
+      }
+    });
+  });
+</script>

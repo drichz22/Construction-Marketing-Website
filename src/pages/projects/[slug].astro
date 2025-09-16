@@ -1,0 +1,134 @@
+---
+import { Image } from "astro:assets";
+import { projects } from "../../data/projects/projects";
+import Layout from "src/layouts/Layout.astro";
+import Loader from '../../components/Reusable/Loader.astro';
+
+import { faLocationDot, faCircleCheck, faChartArea, faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+const { slug } = Astro.params;
+
+export async function getStaticPaths() {
+  return projects.map((p) => ({
+    params: { slug: p.slug },
+    props: { product: p },
+  }));
+}
+
+const project = projects.find((p) => p.slug === slug);
+
+if (!project) {
+  throw new Error(`Project not found: ${slug}`);
+}
+
+import "../../styles/project-details.css";
+---
+
+<Layout>
+  <Loader show={true} />
+  <section class="pt-22 mb-10">
+    <!-- Swiper Image -->
+    {
+      project.images.length > 1 ? (
+        <div class="swiper swiper-project mb-8 fade-section opacity-0">
+          <div class="swiper-wrapper">
+            {project.images.map((img) => (
+              <div class="swiper-slide">
+                <Image src={img.src} alt={img.alt} class="w-full h-[500px] object-cover"/>
+              </div>
+            ))}
+          </div>
+          <!-- Pagination & nav -->
+          <div class="swiper-pagination"></div>
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        </div>
+      ) : (
+        <Image src={project.images[0].src} alt={project.images[0].alt} class="w-full h-[300px] object-cover my-4"/>
+      )
+    }
+    <div class="w-auto h-fit mt-20 pl-15 pr-15 xl:pl-50 xl:pr-50 break-words text-justify">
+      <div class="flex flex-col gap-10">
+        <!-- Desc -->
+        <div class="flex flex-col gap-5">
+          <div class="flex flex-row justify-between">
+            <h1 class="lg:text-6xl text-3xl font-bold text-[#e0aa20] mb-6 fade-section opacity-0 w-[70%]">{project.title}</h1>
+            <a href="/projects">
+              <div class="lg:text-lg text-sm inline-flex hover:text-[#e0aa20] items-center gap-2 transform transition-all duration-400 fade-section opacity-0">
+                  <FontAwesomeIcon icon={faArrowLeft} className="text-xs lg:text-sm"/>
+                  Back to Projects
+              </div>
+            </a>
+          </div>
+          <div class="lg:text-xl text-lg flex flex-col gap-3 font-semibold">
+            <div class="inline-flex gap-4 items-center fade-section opacity-0">
+              <FontAwesomeIcon icon={faLocationDot}/>
+              {project.projectLocation}
+            </div>
+            <div class="inline-flex gap-4 items-center fade-section opacity-0">
+              <FontAwesomeIcon icon={faChartArea}/>
+              {project.projectArea}
+            </div>
+            <div class="inline-flex gap-4 items-center fade-section opacity-0">
+              <FontAwesomeIcon icon={faCircleCheck}/>
+              {project.projectDone}
+            </div>
+          </div>
+        </div>
+        <div class="mt-7 flex flex-col gap-5">
+          <h1 class="lg:text-2xl text-xl flex flex-col gap-3 font-bold fade-section opacity-0">Overview</h1>
+          <p class="lg:text-lg text-sm text-white mb-6 fade-section opacity-0">{project.description}</p>
+        </div>
+        <div class="flex flex-col gap-5">
+          <h1 class="lg:text-2xl text-xl flex flex-col gap-3 font-bold fade-section opacity-0">Info Tambahan</h1>
+          <p class="lg:text-lg text-sm text-white mb-6 fade-section opacity-0">{project.infoTambahan}</p>
+        </div>
+      </div>
+      <div class="w-full h-[1px] bg-gradient-to-r from-transparent via-[#e0aa20] to-transparent mt-20"></div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  import Swiper from "swiper";
+  import { Navigation, Pagination, Autoplay } from "swiper/modules";
+
+  new Swiper(".swiper-project", {
+    modules: [Navigation, Pagination, Autoplay],
+    loop: true,
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    autoplay: {
+      delay: 3000, 
+      disableOnInteraction: false, 
+    },
+    speed: 1000
+  });
+
+  window.addEventListener("load", () => {
+		const loader = document.querySelector("#loader") as HTMLElement | null;
+		if (loader) loader.style.display = "none";
+	});
+
+  // Trigger animation when scrolled to the section
+  const observer = new IntersectionObserver(
+      (entries) => {
+      entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+              entry.target.classList.add("animate-fade-right");
+              entry.target.classList.remove("opacity-0");
+          }
+      });
+      },
+      { threshold: 0.2 }
+  )
+
+  document.querySelectorAll(".fade-section").forEach((el) => observer.observe(el));
+</script>
