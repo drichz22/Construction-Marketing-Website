@@ -13,7 +13,7 @@ function buildEmailTemplate(name: string, email: string, message: string): strin
       </blockquote>
       <hr style="margin-bottom: 10px;"/>
       <p style="font-size: 12px; color: #777;">
-        Pesan ini dikirim dari form pengiriman <span style="font-weight: bold;">Wahyudi Construction</span>.
+        Pesan ini dikirim dari form submisi <span style="font-weight: bold;">Alun-Alun Construction</span>.
       </p>
     </div>
   `;
