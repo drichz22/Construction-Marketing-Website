@@ -1,4 +1,5 @@
 import type { APIRoute } from "astro";
+export const prerender = false;
 
 function buildEmailTemplate(name: string, email: string, message: string): string {
   return `
