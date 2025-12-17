@@ -5,6 +5,14 @@ import navLogo from "../assets/Logo - Alt.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInstagram, faFacebook, faTiktok, faWhatsapp } from "@fortawesome/free-brands-svg-icons";
 import { faChevronDown, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
+
+//Active, Not active state logic
+const currPath = Astro.url.pathname;
+
+const isActive = (href: string) => {
+  if (href === "/") return currPath === "/"; //Init Home active on first load
+  return currPath.startsWith(href);
+};
 ---
 <nav class="fixed top-0 left-0 w-full bg-[#161616] shadow-md z-50">
   <div class="flex items-center justify-between w-full py-5 px-4 relative">
@@ -40,26 +48,26 @@ import { faChevronDown, faShoppingCart } from "@fortawesome/free-solid-svg-icons
           <!-- Navigation Links -->
           <nav class="flex-1">
             <ul class="flex flex-col gap-4 px-6">
-              <li class="cursor-pointer"><a href="/" class="px-2 py-1 text-white hover:bg-[#e0aa20] hover:text-black rounded transition">Home</a></li>
-              <li class="cursor-pointer"><a href="/about" class="px-2 py-1 text-white hover:bg-[#e0aa20] hover:text-black rounded transition">About Us</a></li>
-              <li class="cursor-pointer"><a href="/projects" class="px-2 py-1 text-white hover:bg-[#e0aa20] hover:text-black rounded transition">Projects</a></li>
-              <li class="cursor-pointer"><a href="/services" class="px-2 py-1 text-white hover:bg-[#e0aa20] hover:text-black rounded transition">Services</a></li>
+              <li class="cursor-pointer"><a href="/" class={`px-2 py-1 rounded transition ${isActive("/") ? "bg-[#e0aa20] text-black" : "text-white hover:bg-[#e0aa20] hover:text-black"}`}>Home</a></li>
+              <li class="cursor-pointer"><a href="/about" class={`px-2 py-1 rounded transition ${isActive("/about") ? "bg-[#e0aa20] text-black" : "text-white hover:bg-[#e0aa20] hover:text-black"}`}>About Us</a></li>
+              <li class="cursor-pointer"><a href="/projects" class={`px-2 py-1 rounded transition ${isActive("/projects") ? "bg-[#e0aa20] text-black" : "text-white hover:bg-[#e0aa20] hover:text-black"}`}>Projects</a></li>
+              <li class="cursor-pointer"><a href="/services" class={`px-2 py-1 rounded transition ${isActive("/services") ? "bg-[#e0aa20] text-black" : "text-white hover:bg-[#e0aa20] hover:text-black"}`}>Services</a></li>
               <!-- Dropdown menu -->
-              <li class="relative group px-2 py-1 rounded hover:bg-[#e0aa20] hover:text-black transition-colors duration-100 ease-in-out cursor-pointer">
+              <li class={`relative group px-2 py-1 rounded transition-colors duration-100 ease-in-out cursor-pointer ${isActive("/products") ? "bg-[#e0aa20] text-black" : "hover:bg-[#e0aa20] hover:text-black"}`}>
                 <div class="inline-flex items-center gap-1">
                   <a href="/products">Products</a><FontAwesomeIcon icon={faChevronDown} className="text-xs"/>
                 </div>
                 <!-- Submenu -->
                 <ul class="absolute left-0 mt-1 w-48 bg-[#161616] rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-in-out shadow-lg">
                   <li>
-                    <a href="/products/pasir-semen" class="block px-4 py-2 text-white font-medium hover:bg-[#e0aa20] hover:text-black rounded-tl-lg rounded-tr-lg">Pasir dan Semen</a>
+                    <a href="/products/pasir-semen" class={`block px-4 py-2 font-medium rounded-tl-lg rounded-tr-lg ${isActive("/products/pasir-semen") ? "bg-[#e0aa20] text-black" : "text-white hover:bg-[#e0aa20] hover:text-black"}`}>Pasir dan Semen</a>
                   </li>
                   <li>
-                    <a href="/products/baja-finishing" class="block px-4 py-2 text-white font-medium hover:bg-[#e0aa20] hover:text-black rounded-bl-lg rounded-br-lg">Baja dan Finishing</a>
+                    <a href="/products/baja-finishing" class={`block px-4 py-2 font-medium rounded-bl-lg rounded-br-lg ${isActive("/products/baja-finishing") ? "bg-[#e0aa20] text-black" : "text-white hover:bg-[#e0aa20] hover:text-black"}`}>Baja dan Finishing</a>
                   </li>
                 </ul>
               </li> 
-              <li class="cursor-pointer"><a href="/contact" class="px-2 py-1 text-white hover:bg-[#e0aa20] hover:text-black rounded transition">Contact Us</a></li>
+              <li class="cursor-pointer"><a href="/contact" class={`px-2 py-1 rounded transition ${isActive("/contact") ? "bg-[#e0aa20] text-black" : "text-white hover:bg-[#e0aa20] hover:text-black"}`}>Contact Us</a></li>
             </ul>
           </nav>
           <!-- Social Media -->
@@ -88,12 +96,12 @@ import { faChevronDown, faShoppingCart } from "@fortawesome/free-solid-svg-icons
     </aside>
     <!-- Menu -->
     <ul class="hidden lg:flex flex-row gap-2 py-1 px-1 rounded-lg font-semibold border border-[#e0aa20] text-sm items-center w-full max-w-fit mx-auto bg-transparent" id="navbar-menu">
-      <li class="px-4 py-2 rounded hover:bg-[#e0aa20] hover:text-black transition-colors ease-in-out cursor-pointer"><a href="/">Home</a></li>
-      <li class="px-4 py-2 rounded hover:bg-[#e0aa20] hover:text-black transition-colors ease-in-out cursor-pointer"><a href="/about">About Us</a></li>
-      <li class="px-4 py-2 rounded hover:bg-[#e0aa20] hover:text-black transition-colors ease-in-out cursor-pointer"><a href="/projects">Projects</a></li>
-      <li class="px-4 py-2 rounded hover:bg-[#e0aa20] hover:text-black transition-colors ease-in-out cursor-pointer"><a href="/services">Services</a></li>
+      <li class={`px-4 py-2 rounded transition-colors ease-in-out cursor-pointer ${isActive("/") ? "bg-[#e0aa20] text-black" : "hover:bg-[#e0aa20] hover:text-black"}`}><a href="/">Home</a></li>
+      <li class={`px-4 py-2 rounded transition-colors ease-in-out cursor-pointer ${isActive("/about") ? "bg-[#e0aa20] text-black" : "hover:bg-[#e0aa20] hover:text-black"}`}><a href="/about">About Us</a></li>
+      <li class={`px-4 py-2 rounded transition-colors ease-in-out cursor-pointer ${isActive("/projects") ? "bg-[#e0aa20] text-black" : "hover:bg-[#e0aa20] hover:text-black"}`}><a href="/projects">Projects</a></li>
+      <li class={`px-4 py-2 rounded transition-colors ease-in-out cursor-pointer ${isActive("/services") ? "bg-[#e0aa20] text-black" : "hover:bg-[#e0aa20] hover:text-black"}`}><a href="/services">Services</a></li>
       <!-- Dropdown menu -->
-      <li class="relative group px-4 py-2 rounded hover:bg-[#e0aa20] hover:text-black transition-colors duration-100 ease-in-out cursor-pointer">
+      <li class={`relative group px-4 py-2 rounded transition-colors duration-100 ease-in-out cursor-pointer ${isActive("/products") ? "bg-[#e0aa20] text-black" : "hover:bg-[#e0aa20] hover:text-black"}`}>
         <div class="inline-flex gap-1 items-center cursor-pointer">
           <a href="/products">Products</a>
           <FontAwesomeIcon icon={faChevronDown} className="text-xs"/>
@@ -101,14 +109,14 @@ import { faChevronDown, faShoppingCart } from "@fortawesome/free-solid-svg-icons
         <!-- Submenu -->
         <ul class="absolute left-0 mt-5 w-48 bg-[#161616] rounded-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 ease-in-out shadow-lg">
           <li>
-            <a href="/products/pasir-semen" class="block px-4 py-2 text-white font-medium hover:bg-[#e0aa20] hover:text-black rounded-tl-lg rounded-tr-lg">Pasir dan Semen</a>
+            <a href="/products/pasir-semen" class={`block px-4 py-2 font-medium rounded-tl-lg rounded-tr-lg ${isActive("/products/pasir-semen") ? "bg-[#e0aa20] text-black" : "text-white hover:bg-[#e0aa20] hover:text-black"}`}>Pasir dan Semen</a>
           </li>
           <li>
-            <a href="/products/baja-finishing" class="block px-4 py-2 text-white font-medium hover:bg-[#e0aa20] hover:text-black rounded-bl-lg rounded-br-lg">Baja dan Finishing</a>
+            <a href="/products/baja-finishing" class={`block px-4 py-2 font-medium rounded-bl-lg rounded-br-lg ${isActive("/products/baja-finishing") ? "bg-[#e0aa20] text-black" : "text-white hover:bg-[#e0aa20] hover:text-black"}`}>Baja dan Finishing</a>
           </li>
         </ul>
       </li> 
-      <li class="px-4 py-2 rounded hover:bg-[#e0aa20] hover:text-black transition-colors duration-100 ease-in-out cursor-pointer"><a href="/contact">Contact Us</a></li>
+      <li class={`px-4 py-2 rounded transition-colors ease-in-out cursor-pointer ${isActive("/contact") ? "bg-[#e0aa20] text-black" : "hover:bg-[#e0aa20] hover:text-black"}`}><a href="/contact">Contact Us</a></li>
     </ul>
     <!-- Social Media -->
     <div class="xl:flex xl:gap-4 xl:mr-16 hidden text-white ml-4 mr-16 text-lg lg:grid lg:grid-cols-2 lg:gap-2 lg:mr-2">
